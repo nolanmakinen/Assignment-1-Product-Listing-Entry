@@ -8,6 +8,7 @@ export default function ProductItem({ product, onDelete }) {
   const { name, price, stock, description } = product
 
   return (
+    // Bootstrap card for displaying a product
     <div className="card h-100 shadow-sm mb-3">
       <div className="card-body">
         <h5 className="card-title">{name}</h5>

@@ -14,35 +14,35 @@ export default function App(){
   // Optional: toggle between views; start on 'list'
   const [view, setView] = useState('list') // 'list' | 'form'
 
-  useEffect(() => {
+  useEffect(() => { // Loads the products in localStorage
     setItems(getAllProducts())
   }, [])
 
   // TODO: compute total from items
-  const total = useMemo(() => items.length, [items])
+  const total = useMemo(() => items.length, [items]) // Figures out the number of products
 
-  function handleCreate(data){
+  function handleCreate(data){ // Creating new products
     // TODO: validate (in the form), persist to storage, then update state
     // Example flow (do not copy/paste): create id, add to storage, reload items
     // setItems(...)
     // setView('list')
 
-    const product = {
+    const product = { // Product gets a unique id 
       id: Date.now(),
       ...data
     }
 
-    addProduct(product)
-    setItems(getAllProducts())
-    setView('list')
-    console.log('Create product (student to implement):', data)
+    addProduct(product) // Saves product to localStorage
+    setItems(getAllProducts()) // Gets the updated prodcuts
+    setView('list') // Sets the view back to the list so you can see that the product was added
+    console.log('Create product:', data) // Console log
   }
 
   function handleDelete(id){
     // TODO: remove from storage, then update state
-    removeProduct(id)
-    setItems(getAllProducts())
-    console.log('Delete product (student to implement):', id)
+    removeProduct(id) // Removes the product from localStorage
+    setItems(getAllProducts()) // Gets the updated prodcuts
+    console.log('Delete product:', id) // Console log
   }
 
   return (
